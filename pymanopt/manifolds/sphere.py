@@ -1,8 +1,9 @@
 import numpy as np
 import numpy.linalg as la
 import numpy.random as rnd
+import theano.tensor as T
 
-from manifold import Manifold
+from pymanopt.manifolds.manifold import Manifold
 
 
 class Sphere(Manifold):
@@ -36,11 +37,17 @@ class Sphere(Manifold):
     def inner(self, X, U, V):
         return float(np.tensordot(np.asmatrix(U), np.asmatrix(V)))
 
+    def Tinner(self, X, U, V):
+        return T.tensordot(U, V)
+
     def norm(self, X, U):
         return la.norm(U, "fro")
 
     def dist(self, U, V):
         return np.arccos(self.inner(None, U, V)).real
+
+    def Tdist(self, U, V):
+        return T.real(T.arccos(self.Tinner(None, U, V)))
 
     def proj(self, X, H):
         return H - self.inner(None, X, H) * X

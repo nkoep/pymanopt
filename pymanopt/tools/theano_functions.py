@@ -8,6 +8,7 @@ Jamie Townsend December 2014
 import theano.tensor as T
 import theano
 
+
 def compile(objective, argument):
     """
     Wrapper for the theano.function(). Compiles a theano graph into a python
@@ -48,3 +49,4 @@ def grad_hess(objective, argument):
 
     hess = theano.function([argument, A], R)
     return grad, hess
+
