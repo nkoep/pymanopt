@@ -85,19 +85,19 @@ class _Sphere(EuclideanEmbeddedSubmanifold):
 
 
 class Sphere(_Sphere):
-    """Manifold of shape n1 x n2 x ... x nk tensors with unit 2-norm. The
+    """Manifold of shape ``n1 x n2 x ... x nk`` tensors with unit 2-norm. The
     metric is such that the sphere is a Riemannian submanifold of Euclidean
     space.
 
     Notes
     -----
-    The implementation of the Weingarten map is taken from [1]_.
+    The implementation of the Weingarten map is taken from [AMT2013]_.
 
     References
     ----------
-    .. [1] Absil, P-A., Robert Mahony, and Jochen Trumpf. "An extrinsic look at
-       the Riemannian Hessian." International Conference on Geometric Science
-       of Information. Springer, Berlin, Heidelberg, 2013.
+    .. [AMT2013] Absil, P-A., Robert Mahony, and Jochen Trumpf. "An extrinsic
+       look at the Riemannian Hessian." International Conference on Geometric
+       Science of Information. Springer, Berlin, Heidelberg, 2013.
     """
 
     def __init__(self, *shape):
@@ -147,10 +147,10 @@ class _SphereSubspaceIntersectionManifold(_Sphere):
 
 
 class SphereSubspaceIntersection(_SphereSubspaceIntersectionManifold):
-    """Manifold of n-dimensional unit 2-norm vectors intersecting the
-    r-dimensional subspace of R^n spanned by the columns of the matrix U. This
-    implementation is based on spheresubspacefactory.m from the Manopt MATLAB
-    package.
+    r"""Manifold of n-dimensional unit 2-norm vectors intersecting the
+    r-dimensional subspace of :math:`\mathbb{R}^n` spanned by the columns of
+    the matrix U. This implementation is based on spheresubspacefactory.m from
+    the Manopt MATLAB package.
     """
 
     def __init__(self, U):

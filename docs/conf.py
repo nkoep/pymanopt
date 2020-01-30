@@ -12,6 +12,7 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.coverage",
     "sphinx.ext.mathjax",
+    "sphinx.ext.napoleon",
     "sphinx.ext.viewcode"
 ]
 source_suffix = ".rst"
@@ -33,3 +34,9 @@ autodoc_default_options = {
     "undoc-members": True,
     "show-inheritance": True
 }
+
+# Napoleon settings
+napoleon_google_docstring = False
+napoleon_numpy_docstring = True
+napoleon_include_special_with_doc = False
+napoleon_include_private_with_doc = True
