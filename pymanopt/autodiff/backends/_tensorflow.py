@@ -7,6 +7,11 @@ try:
     import tensorflow as tf
 except ImportError:
     tf = None
+else:
+    if tf.__version__ >= "2":
+        from tensorflow.compat.v1 import Session as _Session
+    else:
+        from tensorflow import Session as _Session
 
 from ._backend import Backend
 from .. import make_graph_backend_decorator
@@ -20,7 +25,7 @@ class _TensorFlowBackend(Backend):
         if self.is_available():
             self._session = kwargs.get("session")
             if self._session is None:
-                self._own_session = self._session = tf.Session()
+                self._own_session = self._session = _Session()
         super().__init__("TensorFlow")
 
     def __del__(self):
